@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: httpbin-ingress-xnap
+spec:
+  rules:
+  - host: httpbin-xnap.example.com
+    http:
+      paths:
+      - backend:
+          serviceName: httpbin-svc
+          servicePort: 80
+
+

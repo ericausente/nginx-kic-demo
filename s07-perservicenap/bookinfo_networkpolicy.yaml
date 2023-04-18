@@ -1,0 +1,18 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: nap-network-policy
+spec:
+  policyTypes:
+  - Ingress
+  podSelector:
+    matchLabels:
+      app: ratings
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: ratings-nap
+    ports:
+    - protocol: TCP
+      port: 9080

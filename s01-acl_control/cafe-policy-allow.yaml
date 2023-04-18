@@ -1,0 +1,9 @@
+apiVersion: k8s.nginx.org/v1alpha1
+kind: Policy 
+metadata:
+  name: cafe-policy 
+spec:
+  accessControl:
+    allow:
+    - 10.1.1.8/32
+

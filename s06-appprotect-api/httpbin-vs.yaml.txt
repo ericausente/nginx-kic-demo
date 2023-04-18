@@ -1,0 +1,14 @@
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServer
+metadata:
+  name: httpbin-vs
+spec:
+  host: httpbin.example.com
+  upstreams:
+  - name: httpbin
+    service: httpbin-svc
+    port: 80
+  routes:
+  - path: /
+    action:
+      pass: httpbin

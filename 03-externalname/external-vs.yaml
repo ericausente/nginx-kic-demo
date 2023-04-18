@@ -1,0 +1,20 @@
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServer
+metadata:
+  name: externalname
+spec:
+  host: httpbin.org
+  upstreams:
+  - name: backend
+    service: my-service
+    port: 80
+  routes:
+  - path: /
+    action:
+      proxy:
+        upstream: backend
+        requestHeaders:
+          pass: true
+          set:
+          - name: kic-demo
+            value: goingthroughkic
